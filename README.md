@@ -1,4 +1,4 @@
-# 📈 理财年化收益率计算器 (apycalc)
+# 📈 理财年化收益率计算器 
 
 [![状态](https://img.shields.io/badge/状态-活跃-brightgreen)](https://returncalc.pages.dev/)
 [![技术栈](https://img.shields.io/badge/技术栈-HTML_CSS_JS_Tesseract.js-blueviolet)](https://developer.mozilla.org/)
