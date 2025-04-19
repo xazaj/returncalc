@@ -8,7 +8,7 @@
 
 一款现代、美观且支持 OCR 图片识别的理财产品年化收益率（几何平均法）计算器。旨在提供便捷、精准的收益率估算体验。
 
-✨ **[在线体验 (Live Demo)](<!-- 替换为你的 Live Demo 链接, e.g., https://<your-username>.github.io/apycalc/ -->)** ✨
+✨ **[在线体验 (Live Demo)](<!-- [https://returncalc.pages.dev/]-->)** ✨
 
 <!-- 
 建议在此处添加一张计算器界面的截图或 GIF 动图
