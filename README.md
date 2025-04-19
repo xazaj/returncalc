@@ -1,6 +1,6 @@
 # 📈 理财年化收益率计算器 (Annualized Yield Calculator - apycalc)
 
-[![部署状态](https://img.shields.io/badge/状态-活跃-brightgreen)](<!-- 替换为你的 Live Demo 链接 -->)
+[![部署状态](https://img.shields.io/badge/状态-活跃-brightgreen)](https://returncalc.pages.dev/)
 [![技术栈](https://img.shields.io/badge/技术栈-HTML_CSS_JS-blueviolet)](https://developer.mozilla.org/)
 [![OCR引擎](https://img.shields.io/badge/OCR-Tesseract.js-orange)](https://github.com/naptha/tesseract.js)
 [![GitHub Pages](https://img.shields.io/badge/部署-GitHub%20Pages-brightgreen)](<!-- 替换为你的 GitHub Pages 链接 -->)
@@ -75,8 +75,8 @@
 
 1.  **克隆仓库:**
     ```bash
-    git clone https://github.com/<your-username>/<repository-name>.git 
-    # 例如： git clone https://github.com/your-username/apycalc.git
+    git clone https://github.com/xazaj/returncalc.git 
+    # 例如： git clone https://github.com/xazaj/returncalc.git
     ```
     或者直接下载 ZIP 文件。
 
