@@ -1,0 +1,489 @@
+/* style.css */
+:root {
+    --primary-color: #4a90e2; /* 主题蓝 */
+    --secondary-color: #50e3c2; /* 辅助青 */
+    --background-start: #f8f9fa; /* 背景渐变起始 */
+    --background-end: #e9ecef; /* 背景渐变结束 */
+    --text-color: #343a40; /* 主要文字颜色 */
+    --light-text: #6c757d; /* 辅助文字颜色 */
+    --card-bg: #ffffff; /* 卡片背景 */
+    --input-border: #ced4da;
+    --input-focus-border: #80bdff;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --font-family: 'Noto Sans SC', sans-serif;
+    --compact-padding: 25px 30px; /* Slightly reduced padding */
+    --mobile-padding: 20px 15px;
+    --compact-margin-bottom: 15px; /* Reduced margin */
+    --mobile-margin-bottom: 12px;
+    --input-focus-glow: rgba(74, 144, 226, 0.35); /* Enhanced focus glow */
+    --container-bg-subtle: linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5)), url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e9ecef' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); /* Subtle pattern */
+    --result-bg: #f1f3f5; /* Slightly different result bg */
+    --label-color: var(--light-text);
+    --label-float-color: var(--primary-color);
+    --input-bg: #fff; /* Explicit input background */
+    --input-border-radius: 8px; /* Consistent radius */
+    --input-height: 48px; /* Consistent height */
+    --input-padding-vertical: 10px;
+    --input-padding-horizontal: 15px;
+    --label-margin-bottom: 6px;
+    --input-border-color: #dee2e6; /* Slightly softer border */
+    --input-hover-border-color: #adb5bd;
+    --input-focus-border-color: var(--primary-color);
+    --input-focus-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    --input-bg-color: #fff;
+    --icon-color: #adb5bd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px; /* Reduce body padding */
+    line-height: 1.6;
+}
+
+.calculator-container {
+    background: var(--card-bg);
+    padding: var(--compact-padding);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 480px; /* Slightly reduce max-width */
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: none;
+}
+
+.calculator-container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 8px; /* Reduced margin */
+    font-weight: 700;
+    font-size: 1.8em; /* Slightly smaller heading */
+}
+
+.subtitle {
+    color: var(--light-text);
+    margin-bottom: 25px; /* Reduced margin */
+    font-size: 0.9em;
+}
+
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    transition: none;
+}
+
+.input-row:focus-within {
+    border-color: initial;
+    box-shadow: none;
+}
+
+.input-col {
+    flex: 1;
+    min-width: 0;
+    border-right: none;
+    background-color: transparent;
+}
+
+.input-col:last-child {
+    border-right: none; /* Remove divider on the last item */
+}
+
+.input-col .input-group {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin-bottom: var(--label-margin-bottom);
+    position: static;
+    transform: none;
+    padding: 0;
+    pointer-events: auto;
+    background-color: transparent;
+    transition: none;
+}
+
+.input-group input {
+    display: block;
+    width: 100%;
+    height: var(--input-height);
+    padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+    font-size: 1em;
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--input-bg-color);
+    background-clip: padding-box;
+    border: 1px solid var(--input-border-color);
+    appearance: none;
+    border-radius: var(--input-border-radius);
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    line-height: 1.5;
+    padding-top: var(--input-padding-vertical);
+    z-index: auto;
+}
+
+.input-group input::placeholder {
+    color: #adb5bd;
+    opacity: 1;
+}
+
+.input-group input:hover {
+    border-color: var(--input-hover-border-color);
+}
+
+.input-group input:focus {
+    outline: 0;
+    border-color: var(--input-focus-border-color);
+    box-shadow: var(--input-focus-shadow);
+}
+
+input[type="date"] {
+    position: relative;
+    padding-right: calc(var(--input-padding-horizontal) + 25px);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type="date"] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23adb5bd'%3E%3Cpath d='M4.5 0a.5.5 0 0 0-.5.5V1h7V.5a.5.5 0 0 0-1 0V1H5V.5a.5.5 0 0 0-.5-.5zM14 3h-1V1.5a.5.5 0 0 0-1 0V3H4V1.5a.5.5 0 0 0-1 0V3H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-1 1v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--input-padding-horizontal) center;
+    background-size: 16px 16px;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-image 0.2s ease;
+}
+
+input[type="date"]:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234a90e2'%3E%3Cpath d='M4.5 0a.5.5 0 0 0-.5.5V1h7V.5a.5.5 0 0 0-1 0V1H5V.5a.5.5 0 0 0-.5-.5zM14 3h-1V1.5a.5.5 0 0 0-1 0V3H4V1.5a.5.5 0 0 0-1 0V3H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-1 1v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h10z'/%3E%3C/svg%3E");
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.calculate-btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 12px 20px; /* Slightly smaller button padding */
+    border-radius: 25px; /* 胶囊形状 */
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 700;
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 5px; /* Reduced margin */
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+    position: relative;
+    overflow: hidden; /* 为了伪元素动画 */
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother transition */
+    height: var(--input-height);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.calculate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.5);
+}
+
+.calculate-btn:active {
+    transform: translateY(0px) scale(0.98); /* Slightly more noticeable press */
+    box-shadow: 0 1px 5px rgba(74, 144, 226, 0.3);
+}
+
+.calculate-btn .btn-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.calculate-btn:hover .btn-icon {
+    transform: rotate(360deg) scale(1.2);
+}
+
+.result-area {
+    margin-top: 25px; /* Reduced margin */
+    padding: 20px; /* Reduced padding */
+    background-color: var(--result-bg);
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards;
+    border-top: 3px solid var(--primary-color); /* Highlight top border */
+    position: relative; /* For potential future pseudo-elements */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.result-area h2 {
+    color: var(--primary-color);
+    margin-bottom: 12px; /* Reduced margin */
+    font-weight: 700;
+}
+
+.result-area p {
+    margin-bottom: 8px; /* Reduced margin */
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.result-area .highlight {
+    font-weight: 700;
+    color: var(--success-color);
+}
+
+.result-area .large {
+    font-size: 1.6em; /* Slightly smaller result font */
+    display: block; /* 让百分号在下面 */
+    margin-top: 2px; /* Reduced margin */
+}
+
+.disclaimer {
+    font-size: 0.8em !important;
+    color: var(--light-text) !important;
+    margin-top: 12px; /* Reduced margin */
+}
+
+.error-message {
+    margin-top: var(--compact-margin-bottom);
+    color: var(--error-color);
+    background-color: rgba(220, 53, 69, 0.1);
+    padding: 8px 12px; /* Slightly smaller padding */
+    border-radius: 8px;
+    border: 1px solid var(--error-color);
+    text-align: center;
+    font-weight: 400;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+    .calculator-container {
+        padding: var(--mobile-padding);
+        max-width: 100%; /* Allow full width on mobile */
+        box-shadow: 0 5px 15px var(--shadow-color); /* Less intense shadow */
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    .subtitle {
+        margin-bottom: 20px;
+    }
+    .upload-btn,
+    .calculate-btn {
+        font-size: 0.95em;
+        padding: 10px 15px;
+    }
+    .input-group input {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+    .result-area {
+        padding: 15px;
+        margin-top: 20px;
+    }
+    .result-area .large {
+        font-size: 1.4em;
+    }
+    .error-message {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .separator {
+        margin: 15px 0;
+    }
+    .loader {
+        padding: 10px;
+    }
+    .spinner {
+        width: 24px;
+        height: 24px;
+    }
+    #loader-status {
+        font-size: 0.85em;
+    }
+    .input-row {
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 18px;
+    }
+    .input-col {
+        border-right: none;
+        border-bottom: 1px solid var(--input-border);
+    }
+     .input-col:last-child {
+        border-bottom: none;
+    }
+    .input-group label {
+        font-size: 0.85em;
+    }
+    .input-group input {
+        font-size: 0.95em;
+        height: calc(var(--input-height) - 4px);
+    }
+    input[type="date"] {
+        padding-right: calc(var(--input-padding-horizontal) + 20px);
+        background-size: 14px 14px;
+    }
+}
+
+/* Custom Upload Button */
+.upload-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); /* Swapped gradient for visual distinction */
+    color: white;
+    border: none;
+    padding: 10px 18px; /* Slightly smaller button padding */
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 700;
+    font-family: var(--font-family);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: var(--compact-margin-bottom);
+    box-shadow: 0 4px 15px rgba(80, 227, 194, 0.4);
+    position: relative; /* Needed for pseudo-elements */
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother transition */
+    height: var(--input-height);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.upload-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(80, 227, 194, 0.5);
+}
+
+.upload-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(80, 227, 194, 0.4);
+}
+
+.upload-btn .btn-icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.upload-btn:hover .btn-icon {
+    transform: scale(1.2);
+}
+
+/* Subtle Shine Effect on Hover */
+.upload-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: -1;
+}
+
+.upload-btn:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Separator */
+.separator {
+    border: none;
+    height: 1px;
+    background-color: var(--input-border);
+    margin: 20px 0; /* Reduced margin */
+}
+
+/* Loader Styles */
+.loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: var(--compact-margin-bottom) 0;
+    padding: 12px;
+    background-color: var(--background-start);
+    border-radius: 8px;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-left-color: var(--primary-color);
+    animation: spin 1s ease infinite;
+    margin-bottom: 8px;
+}
+
+#loader-status {
+    font-size: 0.85em;
+    color: var(--light-text);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Remove old floating label / icon styles --- */
+.input-field-group {
+    padding-top: 0;
+}
+.input-field-group::after {
+    content: none;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>理财年化收益率计算器 (几何平均) - 支持图片识别</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js' defer></script>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>理财年化收益率计算器</h1>
+        <p class="subtitle">支持截图识别或手动输入 (几何平均法)</p>
+
+        <!-- Hidden File Input -->
+        <input type="file" id="image-upload" accept="image/*" style="display: none;">
+        <!-- Custom Upload Button -->
+        <label for="image-upload" class="upload-btn">
+            <span class="btn-text">上传截图自动填充</span>
+            <span class="btn-icon">📷</span>
+        </label>
+
+        <!-- Loading Indicator -->
+        <div id="loader" class="loader" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loader-status">正在识别图片...</p>
+        </div>
+
+        <hr class="separator">
+
+        <form id="return-form">
+            <!-- Start Date and NAV Row -->
+            <div class="input-row">
+                <div class="input-col">
+                    <div class="input-group">
+                        <label for="start-date">期初日期</label>
+                        <input type="date" id="start-date" required>
+                    </div>
+                </div>
+                <div class="input-col">
+                    <div class="input-group">
+                        <label for="start-nav">期初单位净值</label>
+                        <input type="number" id="start-nav" step="0.000001" placeholder="例如: 1.012345" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Date and NAV Row -->
+            <div class="input-row">
+                <div class="input-col">
+                     <div class="input-group">
+                        <label for="end-date">期末日期</label>
+                        <input type="date" id="end-date" required>
+                    </div>
+                </div>
+                 <div class="input-col">
+                    <div class="input-group">
+                        <label for="end-nav">期末单位净值</label>
+                        <input type="number" id="end-nav" step="0.000001" placeholder="例如: 1.013456" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="calculate-btn">
+                <span class="btn-text">计算年化收益率</span>
+                <span class="btn-icon">✨</span>
+            </button>
+        </form>
+
+        <div id="result-area" class="result-area" style="display: none;">
+            <h2>计算结果</h2>
+            <p>近 <span id="holding-days" class="highlight"></span> 天</p>
+            <p>几何平均年化收益率:</p>
+            <p><span id="annualized-return" class="highlight large"></span> %</p>
+            <p class="disclaimer">注意：此结果基于您输入的数据计算得出，历史表现不代表未来收益。短期数据计算的年化收益率波动性较大。</p>
+        </div>
+
+        <div id="error-message" class="error-message" style="display: none;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
